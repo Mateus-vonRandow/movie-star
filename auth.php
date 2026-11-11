@@ -22,29 +22,29 @@ require_once("templates/header.php");
             </div>
             <div class="col-md-4" id="register-container=">
                 <h2>Criar conta</h2>
-                <form action="" method="POST">
-                <input type="hidden" value="register" name="type">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" placeholder="Digite seu email" name="email" id="email">
-                </div>
-                <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" class="form-control" placeholder="Digite seu nome" name="name" id="name">
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Sobrenome:</label>
-                    <input type="text" class="form-control" placeholder="Digite seu sobrenome" name="lastname" id="lastname">
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha:</label>
-                    <input type="password" class="form-control" placeholder="Digite sua senha" name="password" id="password">
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password">Confirmar Senha:</label>
-                    <input type="password" class="form-control" placeholder="Confirme sua senha" name="confirm_password" id="confirm_password">
-                </div>
-                <input type="submit" value="Registrar" class="btn card-btn">
+                <form action="auth_process.php" method="POST">
+                    <input type="hidden" value="register" name="type">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" placeholder="Digite seu email" name="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu nome" name="name" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Sobrenome:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu sobrenome" name="lastname" id="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" class="form-control" placeholder="Digite sua senha" name="password" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirmar Senha:</label>
+                        <input type="password" class="form-control" placeholder="Confirme sua senha" name="confirm_password" id="confirm_password">
+                    </div>
+                    <input type="submit" value="Registrar" class="btn card-btn">
                 </form>
             </div>
         </div>
