@@ -3,6 +3,7 @@
 require_once("globals.php");
 require_once("db.php");
 require_once("models/Message.php");
+require_once("dao/UserDAO.php");
 
 $message = new Message($BASE_URL);
 
@@ -12,6 +13,11 @@ if (!empty($flassMessage["msg"])) {
     // Limpar a mensagem
     $message->clearMessage();
 }
+
+$userDao = new UserDAO($conn, $BASE_URL);
+
+$userData = $userDao->verifyToken(false);
+
 
 ?>
 
@@ -24,7 +30,7 @@ if (!empty($flassMessage["msg"])) {
     <title>Movie Star</title>
     <link rel="short icon" href="<?= $BASE_URL ?>img/moviestar.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= $BASE_URL ?>css/styles.css">
+    <link rel="stylesheet" href="<?= $BASE_URL ?>css/styles.css?v=<?= filemtime(__DIR__ . '/../css/styles.css') ?>">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -37,7 +43,7 @@ if (!empty($flassMessage["msg"])) {
                 <img src="<?= $BASE_URL ?>img/logo.svg" alt="Movie Star" id="logo">
                 <span id="movieStar-title">Movie Star</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <form action="" id="search-form" class="my-2 my-lg-0">
@@ -48,9 +54,24 @@ if (!empty($flassMessage["msg"])) {
             </form>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
-                    </li>
+                    <?php if ($userData): ?>
+                        <li class="nav-item">
+                            <a href="<?= $BASE_URL ?>newmovie.php" class="nav-link"><i class="far fa-plus-square"></i> Incluir filmes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $BASE_URL ?>dashboard.php" class="nav-link">Meus filmes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $BASE_URL ?>editprofile.php" class="nav-link bold"><?= htmlspecialchars($userData->name, ENT_QUOTES, 'UTF-8') ?></a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="<?= $BASE_URL ?>logout.php" class="nav-link bold">Sair</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

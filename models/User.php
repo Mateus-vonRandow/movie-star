@@ -11,6 +11,10 @@ class User
     public $image;
     public $bio;
     public $token;
+    
+    public function getFullName($user) {
+        return $user->name . " " . $user->lastname;
+    }
 
     public function generateToken()
     {
@@ -31,12 +35,13 @@ interface userDAOInterface
 
     public function bulidUser($data);
     public function create(User $user, $authUser = false);
-    public function update(User $user);
+    public function update(User $user, $redirect = true);
     public function verifyToken($protected = false);
     public function setTokenToSession($token, $redirect = true);
     public function authenticateUser($email, $password);
     public function findByEmail($email);
     public function findById($id);
     public function findByToken($token);
+    public function destroyToken();
     public function changepassword(User $user);
 }
