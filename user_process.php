@@ -72,6 +72,30 @@ if ($type === "update") {
 
     // Atualizar senha do usuario
 } else if ($type === "changepassword") {
+
+    $userData = $userDao->verifyToken(true);
+
+    if (!$userData) {
+        exit;
+    }
+
+    $password = filter_input(INPUT_POST, "password");
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+
+    if (!is_string($password) || $password === "" || !is_string($confirmpassword) || $confirmpassword === "") {
+        $message->setMessage("Informe e confirme a nova senha.", "error", "editprofile.php");
+        exit;
+    }
+
+    if ($password === $confirmpassword) {
+
+        $userData->password = $userData->generatePassword($password);
+
+        $userDao->changepassword($userData);
+    } else {
+        $message->setMessage("As senhas não são iguais!", "error", "editprofile.php");
+    }
+
 } else {
     $message->setMessage("Informações inválidas", "error", "index.php");
 }
