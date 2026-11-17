@@ -32,7 +32,7 @@ $userData = $userDao->verifyToken(true);
                 <label for="category">Categoria:</label>
                 <select name="category" id="category" class="form-control">
                     <option value="">Selecione</option>
-                    <option value="Drama">Drama</option>
+                    <option value="Ação">Ação</option>
                     <option value="Comédia">Comédia</option>
                     <option value="Ficção">Ficção</option>
                     <option value="Terror">Terror</option>

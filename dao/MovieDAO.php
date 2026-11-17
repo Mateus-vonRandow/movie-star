@@ -39,7 +39,8 @@ class MovieDAO implements MovieDAOInterface
         return $movie;
     }
     public function findAll() {}
-    public function getLatestMovies() {
+    public function getLatestMovies()
+    {
 
         $movies = [];
 
@@ -47,18 +48,39 @@ class MovieDAO implements MovieDAOInterface
 
         $stmt->execute();
 
-        if($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0) {
 
             $moviesArray = $stmt->fetchAll();
 
-            foreach($moviesArray as $movie) {
-                $movies[] =$this->buildMovie($movie);
+            foreach ($moviesArray as $movie) {
+                $movies[] = $this->buildMovie($movie);
             }
-
         }
-            return $movies;
+        return $movies;
     }
-    public function getMoviesByCategory($category) {}
+    public function getMoviesByCategory($category)
+    {
+
+        $movies = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM movies 
+                                    WHERE category = :category
+                                    ORDER BY id DESC");
+
+        $stmt->bindParam(":category", $category);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+
+            $moviesArray = $stmt->fetchAll();
+
+            foreach ($moviesArray as $movie) {
+                $movies[] = $this->buildMovie($movie);
+            }
+        }
+        return $movies;
+    }
     public function getMoviesById($id) {}
     public function findById($id) {}
     public function findByTitle($title) {}

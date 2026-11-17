@@ -712,3 +712,218 @@ body {
         margin-bottom: 40px;
     }
 }
+
+/* Dashboard */
+
+#main-container:has(#movies-dashboard) {
+    width: 100%;
+    padding: clamp(28px, 5vw, 72px);
+    background:
+        radial-gradient(ellipse at 50% 0, rgb(255 204 0 / 7%), transparent 48%),
+        #121212;
+}
+
+#main-container:has(#movies-dashboard) > .section-title,
+#main-container:has(#movies-dashboard) > .section-description,
+#add-movie-container,
+#movies-dashboard {
+    width: min(100%, 1080px);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#main-container:has(#movies-dashboard) > .section-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-left: 14px;
+    border-left: 4px solid #ffcc00;
+    color: #ffcc00;
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+#main-container:has(#movies-dashboard) > .section-description {
+    margin-bottom: 28px;
+    color: #aaa;
+    font-size: 1.02rem;
+    line-height: 1.6;
+}
+
+#add-movie-container {
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+#add-movie-container .card-btn {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 18px;
+    border: 1px solid #ffcc00;
+    border-radius: 9px;
+    background-color: #ffcc00;
+    color: #171717;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+#add-movie-container .card-btn:hover {
+    transform: translateY(-2px);
+    border-color: #ffdb4d;
+    background-color: #ffdb4d;
+    color: #111;
+    box-shadow: 0 8px 22px rgb(255 204 0 / 20%);
+}
+
+#add-movie-container .card-btn i,
+#movies-dashboard .edit-btn i,
+#movies-dashboard .delete-btn i {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: inherit;
+}
+
+#add-movie-container .card-btn i::before,
+#movies-dashboard .delete-btn i::before {
+    margin-right: 0.4em;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+#movies-dashboard .edit-btn i::before {
+    margin-right: 0.4em;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+
+#add-movie-container .card-btn:focus-visible,
+#movies-dashboard a:focus-visible,
+#movies-dashboard button:focus-visible {
+    outline: 3px solid rgb(255 204 0 / 55%);
+    outline-offset: 3px;
+}
+
+#movies-dashboard {
+    overflow-x: auto;
+    border: 1px solid #353535;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #202020, #171717);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 28%);
+}
+
+#movies-dashboard .table {
+    min-width: 620px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    --bs-table-bg: transparent;
+    --bs-table-color: #e5e5e5;
+    --bs-table-border-color: #353535;
+}
+
+#movies-dashboard .table thead th {
+    padding: 16px 18px;
+    border-bottom: 1px solid #3c3c3c;
+    background-color: #242424;
+    color: #ffcc00;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#movies-dashboard .table tbody td {
+    padding: 17px 18px;
+    border-top: 0;
+    border-bottom: 1px solid #303030;
+    background-color: transparent;
+    color: #e5e5e5;
+    vertical-align: middle;
+}
+
+#movies-dashboard .table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+#movies-dashboard .table tbody tr:hover td {
+    background-color: #242424;
+}
+
+#movies-dashboard .table tbody td:nth-child(3) {
+    color: #ffcc00;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#movies-dashboard .table-movie-title {
+    color: #f5f5f5;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+#movies-dashboard .table-movie-title:hover {
+    color: #ffcc00;
+}
+
+#movies-dashboard .action-column,
+#movies-dashboard .actions-column {
+    text-align: right;
+    white-space: nowrap;
+}
+
+#movies-dashboard .actions-column form {
+    display: inline-flex;
+    margin: 0 0 0 8px;
+}
+
+#movies-dashboard .edit-btn,
+#movies-dashboard .delete-btn {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 7px 11px;
+    border: 1px solid #414141;
+    border-radius: 7px;
+    background-color: #292929;
+    color: #e5e5e5;
+    font: inherit;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+#movies-dashboard .edit-btn:hover {
+    border-color: #ffcc00;
+    background-color: rgb(255 204 0 / 10%);
+    color: #ffcc00;
+}
+
+#movies-dashboard .delete-btn:hover {
+    border-color: #dc3545;
+    background-color: rgb(220 53 69 / 12%);
+    color: #ff7785;
+    cursor: pointer;
+}
+
+@media (max-width: 575.98px) {
+    #main-container:has(#movies-dashboard) {
+        padding: 28px 18px;
+    }
+
+    #add-movie-container .card-btn {
+        width: 100%;
+    }
+
+    #movies-dashboard .table thead th,
+    #movies-dashboard .table tbody td {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+}
