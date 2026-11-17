@@ -9,12 +9,12 @@ class Movie
     public $image;
     public $trailer;
     public $category;
-    public $lenght;
+    public $length;
     public $users_id;
 
     public function imageGenerateName($extension = "jpg")
     {
-        return bin2hex(random_bytes(60)) . "." . $extension;
+        return bin2hex(random_bytes(32)) . "." . $extension;
     }
 }
 

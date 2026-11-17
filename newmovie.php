@@ -25,8 +25,8 @@ $userData = $userDao->verifyToken(true);
                 <input type="file" class="form-control-file" name="image" id="image">
             </div>
              <div class="form-group">
-                <label for="lenght">Duração:</label>
-                <input type="text" class="form-control" id="lenght" name="lenght" placeholder="Digite a duração do filme">
+                <label for="length">Duração:</label>
+                <input type="text" class="form-control" id="length" name="length" placeholder="Digite a duração do filme">
             </div>
              <div class="form-group">
                 <label for="category">Categoria:</label>
@@ -45,7 +45,7 @@ $userData = $userDao->verifyToken(true);
                 <input type="text" class="form-control" id="trailer" name="trailer" placeholder="Insira o link do trailer">
             </div>
              <div class="form-group">
-                <label for="description">DescriçãoÇ</label>
+                <label for="description">Descrição:</label>
                 <textarea name="description" id="description" rows="5" class="form-control" placeholder="Descreva o filme"></textarea>
             </div>
             <input type="submit" class="btn card-btn" value="Adicionar filme">
