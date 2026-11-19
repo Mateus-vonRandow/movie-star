@@ -41,6 +41,7 @@ if (!empty($userData)) {
 }
 
 // Resgatar as reviews do filme
+$alreadyReviewed = false;
 
 ?>
 
@@ -64,7 +65,8 @@ if (!empty($userData)) {
         <div class="offset-md-1 col-md-10" id="reviews-container">
             <h3 id="review-title">Avaliações:</h3>
             <!-- Verifica se habilita review para usuario -->
-             <div class="col-md-121review-form-container">
+             <?php if (!empty($userData) && !$userOwnsMovie && !$alreadyReviewed): ?>
+             <div class="col-md-12" id="review-form-container">
                 <h4>Envie sua avaliação:</h4>
                 <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
                 <form action="<?= $BASE_URL ?>review_process.php" id="review-form" method="POST">
@@ -92,7 +94,9 @@ if (!empty($userData)) {
                     </div>
                     <input type="submit" class="btn card-btn" value="Enviar comentário">
                 </form>
-             </div>
+            </div>
+            <?php endif; ?>
+             
              <!-- Comentarios -->
               <div class="col-md-12 review">
                 <div class="row">

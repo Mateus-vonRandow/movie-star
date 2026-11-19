@@ -89,6 +89,19 @@ if ($type === "create") {
 
     }
 
+} else if ($type === "delete") {
+
+    // Recebe os dados do formulario
+    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+
+    $movie = $id ? $movieDao->findById($id) : null;
+
+    if ($movie && (int) $movie->users_id === (int) $userData->id) {
+        $movieDao->destroy($movie->id);
+    } else {
+        $message->setMessage("Filme não encontrado ou você não tem permissão para removê-lo.", "error", "index.php");
+    }
+
 } else {
     $message->setMessage("Informações inválidas!", "error", "index.php");
 }

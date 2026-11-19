@@ -138,5 +138,15 @@ class MovieDAO implements MovieDAOInterface
         $this->message->setMessage("Filme adicionado com sucesso!", "success", "index.php");
     }
     public function update($movie) {}
-    public function destroy($id) {}
+    public function destroy($id) {
+
+        $stmt = $this->conn->prepare("DELETE FROM movies WHERE id = :id");
+
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        $this->message->setMessage("Filme deletado com sucesso", "success", "dashboard.php");
+
+    }
 }
